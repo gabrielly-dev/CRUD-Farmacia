@@ -1,5 +1,7 @@
 package com.generation.crud_farmacia.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +29,7 @@ public class Categoria {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
-	private Produto produto;
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -45,15 +47,13 @@ public class Categoria {
 		this.nome = nome;
 	}
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	
-	
 
 }
 
